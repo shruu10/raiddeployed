@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>RAID 60 Calculator</title>
+<link rel="stylesheet" href="style.css">
+<body>
+
+    <header>
+        RAID 60 Calculator
+        <nav>
+            <img class="logo" src="./logo.png" alt="">
+            <div class="dropdown">
+                <button class="dropbtn">Raid Calculators</button>
+                <div class="dropdown-content">
+                 <a href="0.html" onclick="showRAID0()">RAID 0</a>
+                 <a href="1.html" onclick="showRAID0()">RAID 1/1E</a>
+                 <a href="5_5E.html" onclick="showRAID0()">RAID 5/5E</a>
+                 <a href="6.html" onclick="showRAID0()">RAID 6</a>
+                 <a href="50.html" onclick="showRAID0()">RAID 50</a>
+                 <a href="60.html " onclick="showRAID0()">RAID 60</a>
+                  
+                </div>
+              </div>
+            <!-- Add more RAID types as needed -->
+        </nav>
+    </header>
+<div id="calculator">
+    <h2>RAID 60 Calculator</h2>
+
+    <label for="totalDisks">Number of Disks:</label>
+    <input type="number" id="totalDisks" min="2" value="2"><br>
+
+    <label for="usableSpace">Disk Size (GB):</label>
+    <input type="number" id="usableSpace" min="1" value="100"><br>
+
+    <button onclick="calculateRaid60Space()">Calculate </button>
+<p>Total Capacity: <span id="result">0</span> GB</p>
+   
+</div>
+
+<script>
+function calculateRaid60Space() {
+    var totalDisks = parseInt(document.getElementById('totalDisks').value);
+    var usableSpace = parseInt(document.getElementById('usableSpace').value);
+
+    if (isNaN(totalDisks) || isNaN(usableSpace) || totalDisks <= 0 || usableSpace <= 0) {
+        alert("Please enter valid numbers for total disks and usable space.");
+        return;
+    }
+
+    var totalSpace = usableSpace * Math.abs(totalDisks - 4); // RAID 60 calculation
+
+    document.getElementById('result').innerHTML = "Total Usable Space: " + totalSpace ;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="style.css">
+  <title>RAID 1 Calculator</title>
+<body>
+  <header>
+    RAID 1 / 1E Calculator
+    <nav>
+      <img class="logo" src="./logo.png" alt="">
+      <div class="dropdown">
+          <button class="dropbtn">Raid Calculator</button>
+          <div class="dropdown-content">
+           <a href="0.html" onclick="showRAID0()">RAID 0</a>
+           <a href="1.html" onclick="showRAID0()">RAID 1/1E</a>
+           <a href="5_5E.html" onclick="showRAID0()">RAID 5/5E</a>
+           <a href="6.html" onclick="showRAID0()">RAID 6</a>
+           <a href="50.html" onclick="showRAID0()">RAID 50</a>
+           <a href="60.html " onclick="showRAID0()">RAID 60</a>
+            
+          </div>
+        </div>
+      <!-- Add more RAID types as needed -->
+  </nav>
+    </header>
+  <div id="calculator">
+    <h2>RAID 1 & 1E Calculator</h2>
+    <label for="totalDisks">Number of Disks:</label>
+    <input type="number" id="totalDisks" min="2" value="2"><br>
+    
+    <label for="usableSpace">Disk Size (GB):</label>
+    <input type="number" id="usableSpace" min="1" value="100"><br>
+   
+
+   <label for="raidLevel">RAID Type:</label>
+    <select id="raidLevel">
+      <option value="1">RAID 1</option>
+      <option value="1E">RAID 1E</option>
+    </select><br>
+    <button onclick="calculate1()">Calculate</button>
+    <p>Total Capacity: <span id="result">0</span> GB</p>
+  </div>
+                    </div>
+                </div>    
+
+            </div><br><br>
+<script>
+function calculate1() {
+  var raidLevel = document.getElementById('raidLevel').value;
+  var totalDisks = parseInt(document.getElementById('totalDisks').value);
+  var usableSpace = parseInt(document.getElementById('usableSpace').value);
+
+  var totalSpace;
+  if (raidLevel === '1') {
+    totalSpace = usableSpace * totalDisks / 2;
+  } else if (raidLevel === '1E') {
+    totalSpace = usableSpace * (totalDisks - 1);
+  }
+
+  document.getElementById('result').innerHTML =  + totalSpace ;
+}
+</script>
+</body>
+</html>

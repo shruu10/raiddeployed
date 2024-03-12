@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RAID 50 Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        RAID 50 Calculator
+        <nav>
+            <img class="logo" src="./logo.png" alt="">
+            <div class="dropdown">
+                <button class="dropbtn">Raid Calculators</button>
+                <div class="dropdown-content">
+                 <a href="0.html" onclick="showRAID0()">RAID 0</a>
+                 <a href="1.html" onclick="showRAID0()">RAID 1/1E</a>
+                 <a href="5_5E.html" onclick="showRAID0()">RAID 5/5E</a>
+                 <a href="6.html" onclick="showRAID0()">RAID 6</a>
+                 <a href="50.html" onclick="showRAID0()">RAID 50</a>
+                 <a href="60.html " onclick="showRAID0()">RAID 60</a>
+                  
+                </div>
+              </div>
+            <!-- Add more RAID types as needed -->
+        </nav>
+    </header>
+    
+    <div id="calculator">
+        <h2>RAID 50 Calculator</h2>
+        <label for="numDrives">Number of Drives:</label>
+        <input type="number" id="numDrives" placeholder="Enter number of drives" required>
+    
+        <label for="driveCapacity">Drive Capacity (GB):</label>
+        <input type="number" id="driveCapacity" placeholder="Enter drive capacity" required>
+    
+        <label for="driveSpeed">Drive Speed (MB/s):</label>
+        <input type="number" id="driveSpeed" placeholder="Enter drive speed" required>
+    
+        <button onclick="calculate()">Calculate RAID 50</button>
+    
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+        var numDisks = parseInt(document.getElementById('numDrives').value);
+        var diskSize = parseInt(document.getElementById('driveCapacity').value);
+        
+
+        var totalDiskSpace = numDisks * diskSize;
+
+        var usableSpace;
+        var faultTolerance;
+
+        
+        usableSpace = (numDisks - 1) * diskSize;
+        faultTolerance = (numDisks - 1) * diskSize;
+       
+
+        document.getElementById('result').innerHTML = 'Usable Storage Capacity: ' + usableSpace + ' GB</p>';
+                                                        
+        }
+
+
+    </script>
+</body>
+</html>
